@@ -44,7 +44,7 @@ The following is a very simple portal that will take us to the end, and is lit b
 CustomPortalBuilder.beginPortal()  
         .frameBlock(Blocks.DIAMOND_BLOCK)  
         .lightWithItem(Items.ENDER_EYE)  
-        .destDimID(new Identifier("the_end"))  
+        .destDimID(Identifier.of("the_end"))  
         .tintColor(45,65,101)  
         .registerPortal();
   ```
@@ -53,7 +53,7 @@ A nether portal would be registered as follows:
 ```java
 CustomPortalBuilder.beginPortal()  
         .frameBlock(Blocks.OBSIDIAN)  
-        .destDimID(new Identifier("the_nether"))  
+        .destDimID(Identifier.of("the_nether"))  
         .tintColor(131, 66, 184)  
         .registerPortal();
   ```
