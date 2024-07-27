@@ -31,8 +31,8 @@ import net.minecraft.world.World;
 public class CustomPortalsMod implements ModInitializer {
     public static final String MOD_ID = "customportalapi";
     public static CustomPortalBlock portalBlock;
-    public static Identifier VANILLAPORTAL_FRAMETESTER = new Identifier(MOD_ID, "vanillanether");
-    public static Identifier FLATPORTAL_FRAMETESTER = new Identifier(MOD_ID, "flat");
+    public static Identifier VANILLAPORTAL_FRAMETESTER = Identifier.of(MOD_ID, "vanillanether");
+    public static Identifier FLATPORTAL_FRAMETESTER = Identifier.of(MOD_ID, "flat");
     public static PortalLinkingStorage portalLinkingStorage;
 
     @Override
@@ -63,6 +63,11 @@ public class CustomPortalsMod implements ModInitializer {
 
         PayloadTypeRegistry.playS2C().register(LinkSyncPacket.PACKET_ID, LinkSyncPacket.codec);
         PayloadTypeRegistry.playS2C().register(ForcePlacePacket.PACKET_ID, ForcePlacePacket.codec);
+
+        //CustomPortalBuilder.beginPortal().frameBlock(Blocks.GLOWSTONE).destDimID(Identifier.of("the_nether")).lightWithWater().setPortalSearchYRange(126, 256).tintColor(125, 20, 20).registerPortal();
+        //CustomPortalBuilder.beginPortal().frameBlock(Blocks.OBSIDIAN).destDimID(Identifier.of("the_end")).tintColor(66, 135, 245).registerPortalForced();
+        //CustomPortalBuilder.beginPortal().frameBlock(Blocks.COBBLESTONE).lightWithItem(Items.STICK).destDimID(Identifier.of("the_end")).tintColor(45, 24, 45).flatPortal().registerPortal();
+        //CustomPortalBuilder.beginPortal().frameBlock(Blocks.EMERALD_BLOCK).lightWithWater().destDimID(Identifier.of("the_end")).tintColor(25, 76, 156).flatPortal().registerPortal();
     }
 
     public static void logError(String message) {
@@ -77,6 +82,6 @@ public class CustomPortalsMod implements ModInitializer {
     //todo fix this with CustomPortalBuilder?
     static {
         portalBlock = new CustomPortalBlock(AbstractBlock.Settings.create().noCollision().ticksRandomly().strength(-1.0f).sounds(BlockSoundGroup.GLASS).luminance(state -> 11).pistonBehavior(PistonBehavior.BLOCK));
-        Registry.register(Registries.BLOCK, new Identifier(CustomPortalsMod.MOD_ID, "customportalblock"), portalBlock);
+        Registry.register(Registries.BLOCK, Identifier.of(CustomPortalsMod.MOD_ID, "customportalblock"), portalBlock);
     }
 }
