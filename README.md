@@ -23,12 +23,18 @@ Library mod allowing developers to easily create portals to their custom dimensi
 
 Add the repository to your build.gradle.
 ```java
-maven {url = "https://maven.kyrptonaught.dev"}
+repositories {
+  // ... any other repositories in this block, as needed
+  maven {url = "https://maven.kyrptonaught.dev"}
+}
   ```
-Add the dependency. 
+Add the dependency to your build.gradle.
 ```java
+dependencies {
+  // ... your other dependencies in this block, as needed
   modImplementation 'net.kyrptonaught:customportalapi:<version>'
   include 'net.kyrptonaught:customportalapi:<version>'
+}
   ```
 
 Now onto creating and registering the portal itself, this is very simple thanks to the [CustomPortalBuilder](https://github.com/kyrptonaught/customportalapi/blob/1.17/src/main/java/net/kyrptonaught/customportalapi/api/CustomPortalBuilder.java) class. We will make use of this in your mod initializer.
