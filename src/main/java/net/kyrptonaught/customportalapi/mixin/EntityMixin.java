@@ -9,6 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -97,13 +98,6 @@ public abstract class EntityMixin implements EntityInCustomPortal, CustomTelepor
     public void CPAgetCustomTPTarget(ServerWorld destination, CallbackInfoReturnable<TeleportTarget> cir) {
         if (this.didTeleport())
             cir.setReturnValue(getCustomTeleportTarget());
-    }
-
-    @Redirect(method = "moveToWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;createEndSpawnPlatform(Lnet/minecraft/server/world/ServerWorld;)V"))
-    public void CPAcancelEndPlatformSpawn(ServerWorld world) {
-        if (this.didTeleport())
-            return;
-        ServerWorld.createEndSpawnPlatform(world);
     }
 
     @Inject(method = "readNbt", at = @At(value = "TAIL"))
