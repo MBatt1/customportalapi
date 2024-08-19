@@ -18,6 +18,10 @@
     {
       "config": "customportalapi.mixins.json",
       "environment": "*"
+    },
+    {
+      "config": "customportalapi.optional.mixins.json",
+      "environment": "*"
     }
   ],
   "entrypoints": {
