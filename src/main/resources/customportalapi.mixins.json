@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityMixin",
+    "EndPortalPlatformMixin",
     "ServerPlayerMixin",
     "portalLighters.AbstractFireMixin",
     "portalLighters.FluidBlockPlacedMixin",
